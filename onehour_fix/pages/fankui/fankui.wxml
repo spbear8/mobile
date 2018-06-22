@@ -1,0 +1,22 @@
+<view class="page">
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="weui-cells__title">意见反馈</view>
+        <view class="weui-cells weui-cells_after-title input2">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea bindinput="content" class="weui-textarea" maxlength="100" placeholder="请输入反馈意见，谢谢您的关注！" style="height: 3.3em"></textarea>
+                    <view class="weui-textarea-counter">{{textLength}}/100</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title ">联系电话</view>
+        <view class="weui-cells weui-cells_after-title input2">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput="mobile" class="weui-input" maxlength="11" placeholder="请输入手机号码" type="number"></input>
+                </view>
+            </view>
+        </view>
+        <button class="weui-btn" formType="submit" type="primary">提交</button>
+    </form>
+</view>

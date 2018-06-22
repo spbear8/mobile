@@ -1,0 +1,18 @@
+{
+    "pages": [
+        "onehour_fix/pages/index/index",
+        "onehour_fix/pages/fankui/fankui",
+        "onehour_fix/pages/order/order",
+        "onehour_fix/pages/detail/detail",
+        "onehour_fix/pages/change/change",
+        "onehour_fix/pages/about/about",
+        "onehour_fix/pages/my/my",
+        "onehour_fix/pages/mydingdan/mydingdan"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "1小时手机服务",
+        "navigationBarTextStyle": "black"
+    }
+}

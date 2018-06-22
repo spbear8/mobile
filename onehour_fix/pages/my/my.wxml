@@ -1,0 +1,21 @@
+<view class="page">
+    <view class="container user-ss">
+        <view class="user-sss">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="page-body-info">
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+    <view>
+        <view bindtap="dianjishijian1" class="tabtree1 yingying"></view>
+        <button class="tabtree2 yingying" openType="contact" sessionFrom="weapp"></button>
+        <view bindtap="dianjishijian3" class="tabtree3 yingying"></view>
+    </view>
+    <view bindtap="dianjishijian4" class="about yingying">
+        <view class="abouttt">关于我们</view>
+        <view class="abouttext2">
+            <text style="width:30rpx;background-color:#fff;margin-left:60rpx;"></text>1小时模式以维修服务为核心结合互联网，向消费者提供各类通讯服务，得到众多品牌厂家、运营商、渠道商的高度认可及合作支持，真正做到以服务带动增长、以维修带动销售，以互联网带动实体店！经营模式以实体店结合线上服务平台（O2O路线为主），以直营和特许加盟方式运营。</view>
+    </view>
+    <button bindtap="dianjishijian4" class="butt">MORE</button>
+</view>

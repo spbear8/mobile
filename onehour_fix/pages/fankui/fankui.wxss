@@ -1,0 +1,9 @@
+page {
+    background-color: #EBEBEB;
+}
+
+.input2 {
+    border: 1rpx;
+    margin: 20rpx;
+    border-radius: 8%;
+}

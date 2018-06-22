@@ -1,0 +1,141 @@
+<view class="container">
+    <swiper autoplay="true" circular="true" class="swiper" duration="1000" indicatorDots="{{indicatorDots}}" interval="4000" wx:if="{{banners==''}}">
+        <swiper-item wx:for="{{lbt_imgs}}" wx:key="lbt_imgs">
+            <image src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <swiper autoplay="true" circular="true" class="swiper" duration="1000" indicatorDots="{{indicatorDots}}" interval="4000" wx:if="{{banners!=''}}">
+        <swiper-item wx:for="{{banners}}" wx:key="banners">
+            <image src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view bindtap="change_door" class="nav">
+        <view class="nav_hd">
+            <view class="nav_l">
+                <image src="{{position_address}}" style="position: relative;top: 0.5vw;left:-1vw; width:84rpx;height:80rpx;"></image>
+            </view>
+            <view class="nav_cont">
+                <text class="cont_hd_txt">{{store_message.name}}<text class="cont_hd_num">({{store_message.disctxt}})</text>
+                </text>
+                <text class="cont_bd_txt">{{store_message.address}}</text>
+            </view>
+            <view class="nav_r">
+                <text data-store="{{store_message}}">更换门店</text>
+                <image src="{{right_jt_blue}}" style="top:4rpx;"></image>
+            </view>
+        </view>
+        <view catchtap="showPicker" class="nav_bd">
+            <view class="nav_l phone_pic">
+                <image src="{{brandimg}}"></image>
+            </view>
+            <view class="nav_cont">
+                <text class="jx_txt">{{phoneModel}}</text>
+                <text class="cont_bd_txt">这可能是您的机型</text>
+            </view>
+            <view class="nav_r">
+                <text>更换机型</text>
+                <image src="{{right_jt_blue}}" style="top:2rpx;"></image>
+            </view>
+        </view>
+    </view>
+    <view class="main">
+        <view catchtap="showFixModal" class="fix-block {{item.status?'choose':''}}" data-child="{{item.child}}" data-instruction="{{item.desc.instruction}}" data-key="{{item.key}}" data-name="{{item.name}}" data-pid="{{item.id}}" wx:for="{{fixList}}" wx:for-index="key" wx:key="unique">
+            <image class="fix-item-img" mode="aspectFill center" src="{{item.desc.logo_path}}"></image>
+            <text class="fix-item-content">{{item.name}}</text>
+            <view class="gou {{item.status?'choose':''}}"></view>
+        </view>
+    </view>
+    <view class="hour_img">
+        <image src="../../images/01hour_tb.png"></image>
+    </view>
+    <button class="sharebutton" openType="share" style="background:#15afff;">
+        <image src="../../images/sharebutton.png"></image>
+    </button>
+    <button class="kfbutton" openType="contact" style="background:#15afff;">
+        <image src="../../images/chatkf.png"></image>
+    </button>
+    <view class="footer">
+        <view class="footer-panel" hidden="{{priceInfoStatus?true:false}}">
+            <view class="img-field">
+                <view class="img-wrapper">
+                    <image class="phone-img" mode="aspectFill center" src="../../images/phone_xd1.png"></image>
+                </view>
+            </view>
+            <view class="price-field text-lg">
+                <text class="price-info">选择故障，查看报价</text>
+            </view>
+            <button catchtap="tip_choose" class="base-btn grey-btn">立即下单</button>
+        </view>
+        <view class="footer-panel" hidden="{{priceInfoStatus?false:true}}">
+            <view catchtap="showPricePanel" class="flex-container">
+                <view class="right-field">
+                    <text class="price">¥{{totalPrice}}元</text>
+                    <text class="price-msg">预计维修价格</text>
+                </view>
+                <view class="left-field" hidden="{{phoneStatus?true:false}}">
+                    <image class="phone-img-hl" mode="aspectFill center" src="../../images/phone_xd2.png"></image>
+                    <view class="num-tips">{{nums}}</view>
+                </view>
+            </view>
+            <button catchtap="linkTo" class="base-btn order-btn">立即下单</button>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{footModalStatus}}">
+        <view catchtap="hideFooterModal" class="shadow"></view>
+        <view class="footer-modal">
+            <image class="angle-icon" src="/onehour_fix/resource/images/angle.png"></image>
+            <view animation="{{topAnimationData}}" class="modal-phone-wrapper">
+                <image class="modal-phone-img" mode="aspectFill center" src="../../images/phone_xd2.png"></image>
+                <view class="num-tips" style="top: -10rpx;">{{nums}}</view>
+            </view>
+            <view class="footer-modal-title">已选故障</view>
+            <view class="footer-modal-list">
+                <view class="footer-modal-item" wx:for="{{priceList}}" wx:key="unique">
+                    <view class="first-column">{{item.name}}</view>
+                    <view class="second-column">¥{{item.price}}</view>
+                    <view class="third-column">
+                        <view catchtap="removeItem" class="cancel-field" data-key="{{item.key}}">
+                            <text class="cancel-icon">×</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{middleModalStatus}}">
+        <view catchtap="hideMiddleModal" class="shadow"></view>
+        <view class="modal-container">
+            <view class="modal-title">{{detail.title}}</view>
+            <view class="fix-list">
+                <view catchtap="itemSelect" class="fix-item {{item.selected?'fix-item-selected':''}}" data-cid="{{item.id}}" data-index="{{index}}" wx:for="{{detail.child}}" wx:key="unique">
+                    <text>{{item.name}}</text>
+                    <text class="pull-right">¥{{item.price[0].price}}</text>
+                </view>
+            </view>
+            <view class="fix_instruction">{{detail.instruction}}</view>
+            <view class="modal-btn-field">
+                <button catchtap="hideMiddleModal" class="modal-foot-btn cancel-btn">取消</button>
+                <button catchtap="showPriceInfo" class="modal-foot-btn ok-btn" data-key="">确定</button>
+            </view>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{pickerStatus}}">
+        <view catchtap="hidePicker" class="shadow"></view>
+        <view class="picker-container">
+            <picker-view bindchange="bindChange" class="picker" indicatorStyle="height: 80rpx;" value="{{value}}">
+                <picker-view-column style="width:40%;">
+                    <view data-id="{{item.id}}" style="line-height: 68rpx;font-size:34rpx;" wx:for="{{brandList}}" wx:key="unique">{{item.name}}</view>
+                </picker-view-column>
+                <picker-view-column style="width:60%;">
+                    <view data-id="{{item.id}}" style="line-height: 68rpx;font-size:34rpx;" wx:for="{{childList}}" wx:key="unique">{{item.name}}</view>
+                </picker-view-column>
+            </picker-view>
+            <view class="modal-btn-field">
+                <button catchtap="clickHidePicker" class="modal-foot-btn block-btn">确定</button>
+            </view>
+        </view>
+    </view>
+    <view class="user-field">
+        <image catchtap="linkToDetail" class="user-img" mode="aspectFill center" src="{{userInfo.avatarUrl}}"></image>
+    </view>
+</view>

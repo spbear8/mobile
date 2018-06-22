@@ -1,0 +1,28 @@
+<view>
+    <image bindload="imageLoad" src="http://omdu781vw.bkt.clouddn.com/aboutnew.jpg" style="width: 100%;height:5100rpx"></image>
+    <form bindsubmit="updatefrom">
+        <view class="texxt">
+            <text class="title1">加盟登记</text>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="username" placeholder="请输入您的名字"></input>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" maxlength="11" name="userphone" placeholder="请输入您的手机号码" type="number"></input>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindRegionChange" customItem="{{customItem}}" mode="region" value="{{region}}">
+                        <input class="weui-input" name="city" placeholder="请输入您所在的城市" value="{{cityyext}}"></input>
+                    </picker>
+                </view>
+            </view>
+            <button class="but" formType="submit">提交</button>
+        </view>
+    </form>
+</view>

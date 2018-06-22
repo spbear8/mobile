@@ -1,0 +1,58 @@
+<view class="container">
+    <view class="section">
+        <picker bindchange="bindRegionChange" customItem="{{customItem}}" mode="region" value="{{region}}">
+            <view class="picker tophead">
+                <text>{{region[0]}}</text>
+                <text>{{region[1]}}</text>
+                <text>{{region[2]}}</text>
+            </view>
+        </picker>
+    </view>
+    <view class="add_list add_list_oo" data-all="{{shopitem}}" id="{{indexs}}" wx:for="{{shop}}" wx:for-index="indexs" wx:for-item="shopitem" wx:key="shopitem">
+        <view bindtap="choose_item" class="add_left" data-all="{{shopitem}}" id="{{indexs}}">
+            <view class="add_title">
+                <text>{{shopitem.name}}</text>
+            </view>
+            <view class="add_body">
+                <text class="xq">{{shopitem.address}}</text>
+                <text class="km">{{shopitem.disctxt}}</text>
+            </view>
+            <view class="allow_mes" wx:if="{{indexs==0}}">
+                <text class="allow_door" wx:if="{{shopitem.hasToStore}}">支持上门</text>
+                <text class="away_near" wx:if="{{indexs==0}}">离我最近</text>
+                <text class="work_day" wx:if="{{shopitem.status==0}}">休息中</text>
+            </view>
+            <view class="allow_mes" wx:if="{{indexs!=0}}">
+                <text class="allow_door" wx:if="{{shopitem.hasToStore}}">支持上门</text>
+                <text class="work_day" wx:if="{{shopitem.status==0}}">休息中</text>
+            </view>
+        </view>
+        <view class="add_btn_wrapper">
+            <view catchtap="call_phone" class="add_btn_wrapper_l" data-mobile="{{shopitem.phone}}">
+                <image class="add_btn_wrapper_icon" src="../../images/phonea.png"></image>
+                <text class="add_btn_wrapper_title">电话联系</text>
+            </view>
+            <view bindtap="daohang" class="add_btn_wrapper_r" data-address="{{shopitem.address}}" data-latitude="{{shopitem.location.lat}}" data-longitude="{{shopitem.location.lng}}" data-title="{{shopitem.name}}">
+                <image class="add_btn_wrapper_icon" src="../../images/daohang.png"></image>
+                <text class="add_btn_wrapper_title">地址导航</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="jiameng" class="add_list add_list_one">
+        <view>
+            <image class="tbimage" src="../../images/jmchange.png"></image>
+            <text style="font-size:35rpx;">加盟咨询</text>
+        </view>
+        <image class="back" src="../../images/right_jt_grey.png"></image>
+    </view>
+    <view bindtap="mailShop" class="add_list add_list_one">
+        <view class="">
+            <image class="tbimage" src="../../images/yjchange.png"></image>
+            <text style="font-size:35rpx;">邮寄维修</text>
+        </view>
+        <image class="back" src="../../images/right_jt_grey.png"></image>
+    </view>
+    <view class="hour_img">
+        <image src="../../images/01hour_tb.png"></image>
+    </view>
+</view>

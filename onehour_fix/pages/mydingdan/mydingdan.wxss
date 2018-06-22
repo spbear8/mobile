@@ -1,0 +1,14 @@
+.weui-form-preview {
+    margin-bottom: 25px;
+}
+
+page {
+}
+
+.pandan {
+    margin: 40rpx;
+    border-radius: 30rpx;
+    background-color: #fff;
+    box-shadow: -1px 6px 18px 6px rgba(113,174,250,.3);
+    float: initial;
+}

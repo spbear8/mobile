@@ -1,0 +1,92 @@
+<view class="container">
+    <view class="section">
+        <view class="order-display">
+            <text>订单状态</text>
+            <text class="text-orange pull-right">{{statusinfo}}</text>
+        </view>
+    </view>
+    <view class="section">
+        <view class="flex-display">
+            <view class="flex-key">联系人</view>
+            <view class="flex-value">{{order.name}} {{order.phone}}</view>
+        </view>
+        <view wx:if="{{order.repair_type_name=='上门'}}">
+            <view class="flex-display">
+                <view class="flex-key">服务地址</view>
+                <view class="flex-value">{{order.province}} {{order.city}} {{order.area}} {{order.address}}</view>
+            </view>
+            <view class="flex-display" style="border-bottom: none;">
+                <view class="flex-key">服务时间</view>
+                <view class="flex-value">{{order.book_time}}</view>
+            </view>
+        </view>
+        <view wx:if="{{order.repair_type_name=='邮寄'}}">
+            <view class="flex-display">
+                <view class="flex-key">回寄地址</view>
+                <view class="flex-value">{{order.province}} {{order.city}} {{order.area}} {{order.address}}</view>
+            </view>
+        </view>
+        <view class="flex-display" style="border-bottom: none;">
+            <view class="flex-key">服务门店</view>
+            <view class="flex-value">{{order.store.name}}</view>
+        </view>
+        <view class="flex-display" style="border-bottom: none;">
+            <view class="flex-key">门店电话</view>
+            <view class="flex-value">{{order.store.phone}}</view>
+        </view>
+        <view class="flex-display" style="border-bottom: none;">
+            <view class="flex-key">门店地址</view>
+            <view class="flex-value"> {{order.store.address}}</view>
+        </view>
+    </view>
+    <view class="section fix-section">
+        <view class="fix-title">{{order.brand}} {{order.model}}</view>
+        <view class="order-display fix-item" wx:for="{{order.order_details}}" wx:key="unique">
+            <text class="text-grey">{{item.fault}}</text>
+            <text class="pull-right">¥{{item.price}}</text>
+        </view>
+    </view>
+    <view class="section">
+        <view class="order-display">
+            <text>优惠</text>
+            <text class="pull-right"></text>
+        </view>
+    </view>
+    <view class="section">
+        <view class="order-display price-padding">
+            <text>维修价格</text>
+            <text class="pull-right">¥{{repairPrice}}</text>
+        </view>
+        <view class="order-display price-padding">
+            <text>优惠</text>
+            <text class="pull-right">-¥ {{discountPrice}}</text>
+        </view>
+        <view class="order-display price-padding">
+            <text>预计需支付</text>
+            <text class="pull-right">¥{{order.total_price}}</text>
+        </view>
+        <view class="tips">维修总价为预计费用，价格以最终维修方案为准</view>
+    </view>
+    <view class="section">
+        <view class="order-display">
+            <text>留言</text>
+            <text class="pull-right">{{order.user_remark}}</text>
+        </view>
+    </view>
+    <view class="section">
+        <view class="flex-display none-border">
+            <view class="flex-key">订单编号</view>
+            <view class="flex-value">{{order.order_sn}}</view>
+        </view>
+        <view class="flex-display none-border">
+            <view class="flex-key">下单时间</view>
+            <view class="flex-value">{{order.create_time}}</view>
+        </view>
+    </view>
+    <view class="section" style="margin-bottom: 0; overflow: hidden;">
+        <button catchtap="orderCancel" class="cancel-btn" wx:if="{{order.order_actions_type<=2&&order.order_actions_type!=-1}}">取消订单</button>
+        <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{order.order_actions_type>=4&&order.status==0&&order.payment_status==0}}">
+            <button class="purchase-btn" formType="submit"> 付款 </button>
+        </form>
+    </view>
+</view>

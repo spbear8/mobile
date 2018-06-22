@@ -1,0 +1,36 @@
+<view class="page">
+    <view class="pandan" wx:if="{{orderlist}}" wx:for="{{orderlist}}" wx:key="k">
+        <navigator url="../detail/detail?order_sn={{item.order_sn}}">
+            <view class="">
+                <view class="weui-form-preview__hd">
+                    <view class="weui-form-preview__label">维修金额</view>
+                    <view class="weui-form-preview__value_in-hd">¥{{item.total_price}}</view>
+                </view>
+                <view class="weui-form-preview__bd">
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label">设备信息</view>
+                        <view class="weui-form-preview__value">{{item.brand}}-{{item.model}}</view>
+                    </view>
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label">订单号</view>
+                        <view class="weui-form-preview__value">{{item.order_sn}}</view>
+                    </view>
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label">故障类型</view>
+                        <view class="weui-form-preview__value">
+                            <view wx:for="{{item.order_details}}" wx:for-item="detail" wx:key="detail_k">
+              {{detail.fault_parent}} 
+            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-form-preview__ft">
+                    <view bindtap="dadianhua" class="weui-form-preview__btn" hoverClass="weui-form-preview__btn_active" style="color:#51a9fe;" url="">联系客服</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+    <view style="color:#c0c0c0;font-size:11pt;text-align: center;margin: 40rpx;" wx:if="{{orderlist==null}}">您还没有订单呢,赶紧去下单体验一下吧！</view>
+    <view bindtap="onPullDownRefresh" style="color:#576b95;font-size:22rpx; width: 100%;text-align: center;" wx:if="{{orderlist==null}}">下拉刷新<icon type="String"></icon>
+    </view>
+</view>

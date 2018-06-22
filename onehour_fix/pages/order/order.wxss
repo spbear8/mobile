@@ -1,0 +1,686 @@
+.banner {
+    width: 100%;
+    height: 35vw;
+    text-align: center;
+    background-image: linear-gradient(to bottom,#2692ff,#15afff);
+}
+
+.banner_cont {
+    position: relative;
+    top: 15%;
+    margin: 0 auto;
+    width: 50%;
+    height: 20vw;
+    text-align: center;
+    color: #fff;
+}
+
+.banner_cont text {
+    display: block;
+}
+
+.banner_cont text.price_fh {
+    display: inline-block;
+    font-size: 28rpx;
+}
+
+.banner_cont text.price {
+    display: inline-block;
+    font-size: 80rpx;
+    font-weight: 700;
+}
+
+.banner_cont text {
+    display: block;
+    font-size: 28rpx;
+}
+
+.nav {
+    padding: 5vw 10%;
+    width: 80%;
+    height: 12.5vw;
+    background-color: #fff;
+}
+
+.nav>view {
+    height: 12vw;
+    float: left;
+}
+
+.nav image {
+    position: relative;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.nav_l {
+    width: 17%;
+}
+
+.nav_cont {
+    width: 53%;
+}
+
+.nav_cont_hd {
+    display: block;
+    padding-top: 2vw;
+    font-size: 32rpx;
+    line-height: 28rpx;
+}
+
+.nav_cont_bt {
+    font-size: 28rpx;
+    color: #959595;
+}
+
+.nav_r {
+    width: 30%;
+    line-height: 13vw;
+    font-size: 32rpx;
+}
+
+.nav_r image {
+    margin-left: 2vw;
+    width: 18rpx;
+    height: 25rpx;
+}
+
+.user-field {
+    width: 110rpx;
+    height: 11vw;
+    background-color: #fff;
+    border-top-left-radius: 45%;
+    border-bottom-left-radius: 45%;
+    position: absolute;
+    right: 0;
+    top: 2vw;
+    overflow: hidden;
+    padding: 4rpx;
+    box-sizing: border-box;
+}
+
+.user-img {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    position: relative;
+    top: 2rpx;
+}
+
+.container {
+    background-color: #eee;
+}
+
+.header {
+    height: 200rpx;
+    background-color: #FFDA47;
+    text-align: center;
+    padding-top: 40rpx;
+    box-sizing: border-box;
+}
+
+.small {
+    font-size: 24rpx;
+}
+
+.func-field {
+    height: 86rpx;
+    display: flex;
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.func-item {
+    flex-grow: 1;
+    height: 100%;
+    line-height: 115%;
+    font-size: 34rpx;
+    text-align: center;
+}
+
+.func-item-icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 8rpx;
+    vertical-align: middle;
+}
+
+.func-item-text {
+    vertical-align: middle;
+}
+
+.fcolor-field {
+    padding: 5vw 26rpx;
+    background-color: #fff;
+    border-top: 20rpx solid #eee;
+}
+
+.fcolor-title {
+    padding-top: 10rpx;
+    font-size: 34rpx;
+    padding: 1vw 2vw;
+    border-radius: 8rpx;
+    text-align: center;
+}
+
+.fcolor-content {
+    overflow: hidden;
+    text-align: center;
+}
+
+.fcolor-item {
+    width: 105rpx;
+    height: 105rpx;
+    line-height: 105rpx;
+    border: 1px solid gainsboro;
+    display: inline-block;
+    margin-right: 10rpx;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.fcolor-item:last-child {
+    margin-right: 0;
+}
+
+.color-selected {
+    background-color: #15afff;
+    border-color: #15afff;
+    color: #fff;
+}
+
+.ftype-field {
+    border-top: 20rpx solid #eee;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.ftype-title {
+    padding: 20rpx 0 50rpx;
+    text-align: center;
+    font-size: 34rpx;
+}
+
+.ftype-container {
+    display: flex;
+    margin: 7vw 0;
+}
+
+.ftype-item {
+    flex-grow: 1;
+    text-align: center;
+    color: #666;
+}
+
+.ftype-item .ftype-figcaption.choose_type {
+    color: #15afff;
+}
+
+.ftype-icon {
+    width: 90rpx;
+    height: 85rpx;
+    margin-bottom: 4rpx;
+}
+
+.ftype-figcaption {
+    font-size: 28rpx;
+}
+
+.ftype-info-wrapper {
+    position: relative;
+    padding-top: 26rpx;
+}
+
+.angle-gold {
+    width: 26rpx;
+    height: 26rpx;
+    position: absolute;
+    top: 8rpx;
+}
+
+.angle-one {
+    left: 78rpx;
+}
+
+.angle-two {
+    left: 268rpx;
+}
+
+.angle-three {
+    right: 268rpx;
+}
+
+.angle-four {
+    right: 78rpx;
+}
+
+.list_hd {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 68rpx;
+    line-height: 68rpx;
+    text-align: center;
+    color: #333;
+    background-color: #d9f5ff;
+    font-size: 26rpx;
+}
+
+.smwx_list_hd::before,.ddwx_list_hd::before,.yjwx_list_hd::before {
+    position: absolute;
+    top: -15rpx;
+    left: 45%;
+    content: "";
+    border-color: transparent transparent #d9f5ff transparent;
+    border-style: solid;
+    border-width: 0 15rpx 20rpx 15rpx;
+}
+
+.ddwx_list_hd::before {
+    left: 15%;
+}
+
+.yjwx_list_hd::before {
+    left: 78%;
+}
+
+.list_inp {
+    position: relative;
+    height: auto;
+}
+
+.list_inp:last-child {
+    border-bottom: none;
+}
+
+.list_inp image {
+    position: relative;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.list_inp .image23 {
+    position: relative;
+    width: 29rpx;
+    top: 0;
+    height: 26rpx;
+}
+
+.list_inp .image24 {
+    position: relative;
+    width: 29rpx;
+    top: 0;
+    height: 28rpx;
+}
+
+.list_inp .image25 {
+    position: relative;
+    width: 30rpx;
+    top: 0;
+    height: 34rpx;
+}
+
+.list_inp image.time_tb {
+    width: 27.5rpx;
+    height: 27.5rpx;
+}
+
+.list_inp image.right_jt_grey {
+    top: -1vw;
+    width: 18rpx;
+    height: 20rpx;
+}
+
+.list_inp {
+    margin: 0 5%;
+    padding: 3vw 0;
+    width: 90%;
+    border-bottom: 1px solid #eee;
+}
+
+.list_inp input {
+    display: inline-block;
+    padding-left: 3vw;
+    width: 88%;
+    font-size: 28rpx;
+    color: #333;
+    vertical-align: middle;
+}
+
+.list_inp text.color_333 {
+    color: #333;
+}
+
+.address_txt {
+    display: inline-block;
+    width: 88%;
+    padding-left: 3vw;
+}
+
+.list_inp text {
+    position: relative;
+    top: 0;
+    margin-left: 3vw;
+    font-size: 28rpx;
+    color: grey;
+}
+
+.list_inp text.red {
+    color: #ff1631;
+}
+
+.list_inp .phone_num {
+    margin: 0;
+    display: inline-block;
+    color: #01b3f6;
+}
+
+.list_inp .cont_hd_num {
+    color: #ff1631;
+    font-size: 24rpx;
+    top: 0;
+    margin: 0;
+}
+
+.address_txt text {
+    color: #333;
+    margin: 0;
+}
+
+.smwx_bz {
+    position: relative;
+    padding: 2vw 5% 3vw;
+    border-top: 2vw solid #eee;
+    font-size: 34rpx;
+    color: #333;
+}
+
+.smwx_bz input {
+    position: relative;
+    top: 1.5vw;
+    display: inline-block;
+    margin-left: 4vw;
+    font-size: 32rpx;
+}
+
+.yj_add_content {
+    padding: 2vw 0;
+    border-top: 20rpx solid #eee;
+}
+
+.yj_add_content .ftype-title {
+    padding: 10rpx 0;
+}
+
+.yj_add_content .list_inp {
+    padding: 0;
+    border: none;
+}
+
+.ftype-form-item {
+    padding: 10rpx 16rpx 20rpx 0;
+    border-bottom: 1px solid gainsboro;
+}
+
+.form-item-icon {
+    width: 36rpx;
+    height: 36rpx;
+    vertical-align: middle;
+}
+
+.form-item-text {
+    position: relative;
+    font-size: 28rpx;
+    display: inline-block;
+    vertical-align: middle;
+    width: 88%;
+    box-sizing: border-box;
+}
+
+.form-item-menu {
+    width: 38rpx;
+    height: 38rpx;
+    float: right;
+    margin-top: 12rpx;
+}
+
+.form-item-input {
+    width: 520rpx;
+    display: inline-block;
+    font-size: 28rpx;
+    vertical-align: middle;
+}
+
+.input-field {
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    white-space: nowrap;
+    background-color: #fff;
+}
+
+.label {
+    margin-left: 3%;
+    width: 110rpx;
+    display: inline-block;
+    font-size: 28rpx;
+    vertical-align: middle;
+}
+
+.xieyi_box {
+    padding: 1vw 5% 0;
+    font-size: 26rpx;
+    color: grey;
+}
+
+.xieyi_choose {
+    position: relative;
+    top: 1vw;
+    margin-right: 2vw;
+    display: inline-block;
+    width: 30rpx;
+    height: 30rpx;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6rpx;
+}
+
+.xieyi_txt {
+    color: #01b3f6;
+}
+
+.xieyi_box radio {
+    padding-right: 2vw;
+}
+
+.gou {
+    display: inline-block;
+    position: relative;
+    top: -5vw;
+    left: -2.7vw;
+}
+
+.gou::before {
+    content: "";
+    margin: 10px 0 0 -10px;
+    position: absolute;
+    width: 7px;
+    height: 3px;
+    border-left: 2px solid #15afff;
+    border-bottom: 2px solid #15afff;
+    transform: rotate(-45deg);
+}
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+.drawer_box {
+    padding: 2vw 0 8vw;
+    width: 92%;
+    overflow: hidden;
+    position: fixed;
+    top: 37%;
+    left: 0;
+    z-index: 1001;
+    background: #FAFAFA;
+    margin: -150px 4% 0;
+    border-radius: 3px;
+}
+
+.drawer_box text {
+    display: block;
+    font-size: 26rpx;
+}
+
+.drawer_box .xieyi_title {
+    position: fixed;
+    background-color: #FAFAFA;
+    padding: 4vw 0;
+    display: block;
+    width: 90%;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.drawer_box .daoyan {
+    margin-top: 110rpx;
+}
+
+.drawer_box .xieyi_content {
+    padding: 0 6%;
+    width: 88%;
+    height: 800rpx;
+    font-size: 24rpx;
+    color: #333;
+    overflow-y: scroll;
+}
+
+.drawer_box .xieyi_content::-webkit-scrollbar {
+    display: none;
+}
+
+.tip-field {
+    padding: 30rpx 5%;
+    font-size: 24rpx;
+    color: grey;
+}
+
+.tip-item {
+    margin-top: 10rpx;
+}
+
+.footer {
+    padding: 40rpx 20rpx;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+.fix-btn {
+    width: 95%;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 36rpx;
+    background-color: #15afff;
+    color: #fff;
+    font-weight: 700;
+}
+
+.modal-container {
+    height: auto;
+    top: calc(50% - 100rpx);
+}
+
+.picker-container {
+    width: 630rpx;
+    height: 560rpx;
+    position: absolute;
+    left: calc(50% - 315rpx);
+    top: calc(50% - 280rpx);
+    background-color: #fff;
+    border-radius: 10rpx;
+    text-align: center;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.picker {
+    width: 100%;
+    height: 400rpx;
+    font-size: 30rpx;
+}
+
+.modal-item {
+    text-align: left;
+    padding: 20rpx;
+    padding-top: 0;
+}
+
+.modal-info {
+    font-size: 28rpx;
+}
+
+.modal-pull-right {
+    float: right;
+    color: red;
+    font-size: 28rpx;
+    padding-top: 12rpx;
+}
+
+.cancel-icon {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: -20rpx;
+    top: -20rpx;
+    z-index: 1999;
+}
+
+.modal-btn-field {
+    padding-top: 40rpx;
+}
+
+.modal-foot-btn {
+    width: 48%;
+    height: 90rpx;
+    font-size: 34rpx;
+}
+
+.cancel-btn {
+    color: grey;
+    background-color: #fff;
+    border: 1px solid gainsboro;
+    float: left;
+    letter-spacing: 20rpx;
+    text-indent: 20rpx;
+    text-align: center;
+}
+
+.ok-btn {
+    color: #fff;
+    background-color: #15afff;
+    float: right;
+    letter-spacing: 20rpx;
+    text-indent: 20rpx;
+    text-align: center;
+}
+
+.repairHide {
+    display: none!important;
+}
+
+.repairShow {
+    display: block!important;
+}

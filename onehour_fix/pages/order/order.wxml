@@ -1,0 +1,280 @@
+<view class="container">
+    <view class="banner">
+        <view class="banner_cont">
+            <text class="price_fh">￥</text>
+            <text class="price">{{totalPrice}}</text>
+            <text class="eval_txt">预估维修价，实际以检测为准</text>
+        </view>
+    </view>
+    <view class="nav">
+        <view class="nav_l">
+            <image src="{{brandimg}}" style="left: -2vw;"></image>
+        </view>
+        <view class="nav_cont">
+            <text class="nav_cont_hd">{{category}}</text>
+            <text class="nav_cont_bt">您选择的机型</text>
+        </view>
+        <view catchtap="showModal" class="nav_r">
+            <text bindtap="tap_default_list" class="nav_r_txt" data-statu="open">故障列表</text>
+            <image src="{{right_jt_blue}}"></image>
+        </view>
+    </view>
+    <view class="fcolor-field" wx:if="{{chooseColor}}">
+        <view class="fcolor-content">
+            <view catchtap="selectColor" class="fcolor-item {{color==index?'color-selected':''}}" data-id="{{index}}" data-item="{{item}}" wx:for="{{colorList}}" wx:key="unique">{{item}}</view>
+        </view>
+    </view>
+    <view class="ftype-field">
+        <view class="ftype-container">
+            <view catchtap="selectType" class="ftype-item" data-id="2" data-repairWay="2">
+                <image class="ftype-icon" hidden="{{fixType==2?true:false}}" mode="aspectFill center" src="../../images/dd_grey.png"></image>
+                <image class="ftype-icon" hidden="{{fixType==2?false:true}}" mode="aspectFill center" src="../../images/dd_blue.png"></image>
+                <view class="ftype-figcaption {{fixType==2?'choose_type':''}}">到店维修</view>
+            </view>
+            <view catchtap="selectType" class="ftype-item" data-id="1" data-repairWay="1">
+                <image class="ftype-icon" hidden="{{fixType==1?true:false}}" mode="aspectFill center" src="../../images/sm_grey.png"></image>
+                <image class="ftype-icon" hidden="{{fixType==1?false:true}}" mode="aspectFill center" src="../../images/sm_blue.png"></image>
+                <view class="ftype-figcaption {{fixType==1?'choose_type':''}}">上门维修</view>
+            </view>
+            <view catchtap="selectType" class="ftype-item" data-id="3" data-repairWay="3">
+                <image class="ftype-icon" hidden="{{fixType==3?true:false}}" mode="aspectFill center" src="../../images/yj_grey.png"></image>
+                <image class="ftype-icon" hidden="{{fixType==3?false:true}}" mode="aspectFill center" src="../../images/yj_blue.png"></image>
+                <view class="ftype-figcaption {{fixType==3?'choose_type':''}}">邮寄维修</view>
+            </view>
+        </view>
+        <view class="ftype-list" hidden="{{fixType==1?false:true}}">
+            <text class="smwx_list_hd list_hd">快速响应，您的私人工程师</text>
+            <view class="list_inp ">
+                <image src="{{message_tb}}" style="{{address_status2==true?'top:-3vw':''}}"></image>
+                <text bindtap="choose_address" class="form-item-text red" wx:if="{{address_status1}}">请选择您的信息</text>
+                <view bindtap="choose_address" class="address_txt" wx:if="{{address_status2}}">
+                    <text>{{userName}}</text>
+                    <text style="margin-left:8vw;">{{user_phone}}</text>
+                    <text style="display:block;">{{address}}</text>
+                </view>
+                <image class="right_jt_grey" src="{{right_jt_grey}}" style="{{address_status2==true?'top:-3vw':''}}"></image>
+            </view>
+            <view catchtap="chooseTime" class="list_inp">
+                <image class="form-item-icon" mode="aspectFill center" src="{{time_tb}}" style="top:-0.5vw;"></image>
+                <text catchtap="chooseTime" class="form-item-text  {{_color==333?'color_333':'red'}}">{{serverTime}}</text>
+                <image class="right_jt_grey" src="{{right_jt_grey}}"></image>
+            </view>
+        </view>
+        <view class="ftype-list" hidden="{{fixType==2?false:true}}">
+            <text class="ddwx_list_hd list_hd">到店维修，1小时修好，专业保障</text>
+            <view class="list_inp ">
+                <image class="image23" src="/onehour_fix/images/ch.png"></image>
+                <input bindinput="bindusername" name="ddusername" placeholder="请输入您的称呼" value="{{userName}}"></input>
+            </view>
+            <view class="list_inp ">
+                <image class="image24" src="/onehour_fix/images/lxdh.png"></image>
+                <input bindinput="bindmobile" maxlength="11" name="dduserphone" placeholder="请输入您的联系方式" type="number" value="{{user_phone}}"></input>
+            </view>
+            <view class="list_inp ">
+                <image class="image25" src="/onehour_fix/images/dwdz.png" style=""></image>
+                <text class="form-item-text">{{severdoor.name}}<text class="cont_hd_num">({{severdoor.disctxt}})</text>
+                </text>
+            </view>
+        </view>
+        <view class="ftype-list" hidden="{{fixType==3?false:true}}">
+            <text class="yjwx_list_hd list_hd">邮寄维修，顺丰双向包邮，效率保障</text>
+            <view class="list_inp " style="border-bottom:none; display:block;">
+                <image src="{{message_tb}}" style="{{address_status2==true?'top:-3vw':''}}"></image>
+                <text bindtap="choose_address" class="form-item-text red" wx:if="{{address_status1}}">请选择您的信息</text>
+                <view bindtap="choose_address" class="address_txt" style="height:1.4rem;" wx:if="{{address_status2}}">
+                    <text>{{userName}}</text>
+                    <text style="margin-left:8vw;">{{user_phone}}</text>
+                    <text style="display:block;">{{address}}</text>
+                </view>
+                <image class="right_jt_grey" src="{{right_jt_grey}}" style="{{address_status2==true?'top:-3vw':''}}"></image>
+            </view>
+            <view class="yj_add_content">
+                <view class="ftype-title">寄修地址</view>
+                <view class="list_inp ">
+                    <image src="{{house_tb}}"></image>
+                    <text class="form-item-text">邮寄门店：{{mailStore.name}}</text>
+                </view>
+                <view class="list_inp ">
+                    <image src="{{address_tb}}"></image>
+                    <text class="form-item-text">地　　址：{{mailStore.address}}</text>
+                </view>
+                <view class="list_inp ">
+                    <image src="{{phone_tb}}" style="width:24rpx;margin-left:4rpx;"></image>
+                    <text class="form-item-text" style="width:150rpx;">门店电话：</text>
+                    <text bindtap="callphone" class="phone_num">{{mailStore.phone}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="input-field">
+    <view class="label">备注</view>
+    <input bindinput="bindremark" class="form-item-input" placeholder="在此输入你的留言" type="text" value="{{remark}}"></input>
+</view>
+<view class="xieyi_box">
+    <text bindtap="xieyi_choose" class="xieyi_choose"></text>
+    <view class="gou" wx:if="{{xieyi_choose}}"></view>
+    <text class="agree_txt">我已经详细阅读并同意</text>
+    <text bindtap="xieyi_bind" class="xieyi_txt" data-statu="open">《1小时用户服务协议》</text>
+</view>
+<view class="tip-field">
+    <text class="tip-title">温馨提示</text>
+    <view class="tip-item">1.具体上门时间以工程师预约为准</view>
+    <view class="tip-item">2.损坏零件工程师需要收回，如需自留另补差价</view>
+    <view class="tip-item">3.该维修价格为预计金额，实际金额以工程师检测故障为准</view>
+</view>
+<view class="footer">
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <button class="fix-btn" disabled="{{onOff}}" formType="submit">立即维修</button>
+    </form>
+</view>
+<view class="modal" wx:if="{{modalStatus}}">
+    <view catchtap="hideModal" class="shadow"></view>
+    <view class="modal-container">
+        <view class="modal-title">{{category}}</view>
+        <view class="modal-item" wx:for="{{troubleList}}" wx:key="unique">
+            <text class="modal-info">{{item.name}}</text>
+            <text class="modal-pull-right">¥{{item.price[0].price}}</text>
+        </view>
+        <image catchtap="hideModal" class="cancel-icon" mode="aspectFill center" src="/onehour_fix/resource/images/cancel.png"></image>
+    </view>
+</view>
+<view class="modal" wx:if="{{timePickerStatus}}">
+    <view catchtap="hideTimePicker" class="shadow"></view>
+    <view class="picker-container">
+        <picker-view bindchange="bindChange" class="picker" indicatorStyle="height: 80rpx;" value="{{value}}">
+            <picker-view-column>
+                <view style="line-height: 80rpx;" wx:for="{{dateList}}" wx:key="*this">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column hidden="{{isToday?false:true}}">
+                <view style="line-height: 80rpx" wx:for="{{todayTimeList}}" wx:key="unique">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column hidden="{{isToday?true:false}}">
+                <view style="line-height: 80rpx" wx:for="{{timeList}}" wx:key="unique">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+        <view class="modal-btn-field">
+            <button catchtap="hideTimePicker" class="modal-foot-btn cancel-btn">取消</button>
+            <button catchtap="timeSelect" class="modal-foot-btn ok-btn">确定</button>
+        </view>
+    </view>
+</view>
+<view class="user-field">
+    <image catchtap="linkToDetail" class="user-img" mode="aspectFill center" src="{{userInfo.avatarUrl}}"></image>
+</view>
+<view bindtap="close_xy" class="drawer_screen" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <view class="xieyi_content">
+        <text class="xieyi_title">《1小时手机服务连锁互联网用户服务协议》</text>
+        <text class="daoyan">【导言】</text>
+        <text>首先欢迎您选择“1小时手机服务”！</text>
+        <text>“1小时”在此特别提醒您在预约维修服务之前，请认真阅读本《服务协议》（以下简称“协议”），确保您充分理解本协议中各条款。请您审慎阅读并选择接受或不接受本协议。除非您接受本协议所有条款，否则您无权使用本协议所涉服务。您的预约、查询、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。如果您未满18周岁，请在法定监护人的陪同下阅读本协议。</text>
+        <text>一、【协议范围】</text>
+        <text>1.1 协议适用主体范围</text>
+        <text>本协议是您与“1小时”之间的协议。</text>
+        <text>“1小时”是指广州一小时科技有限公司及其旗下的加盟和代理机构、与“1小时”相关服务存在运营关联的单位。</text>
+        <text>“用户”是指使用1小时相关服务的使用人，在本协议中更多地称为“您”。</text>
+        <text>1.2 本许可协议指向内容</text>
+        <text>本协议项下的许可内容是指1小时向用户提供的包括但不限于移动设备的维修服务（以下简称“服务”）。</text>
+        <text>1.3 协议关系及冲突条款</text>
+        <text>本协议可由1小时随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本网站查阅最新版协议条款。在1小时修改协议条款后，如果用户不接受请立即停止使用服务，继续使用，则被视为接受修改后的协议。</text>
+        <text>二、【个人隐私信息保护】</text>
+        <text>2.1 用户在使用本服务的过程中，可能需要填写或提交一些必要的信息，如法律法规、规章规范性文件（以下称“法律法规”）规定的需要填写的身份信息。如用户提交的信息不完整或不符合法律法规的规定， 则用户可能无法使用本服务或在使用本服务的过程中受到限制。</text>
+        <text>2.2 个人隐私信息是指涉及用户个人身份或个人隐私的信息，比如，用户真实姓名、手机号码、手机设备识别码、详细地址等等。非个人隐私信息是指用户对本服务的操作状态以及使用习惯等明确且客观反映在1小时服务器端的基本记录信息、个人隐私信息范围外的其它普通信息，以及用户同意公开的上述隐私信息。</text>
+        <text>2.3 尊重用户个人隐私信息的私有性是1小时的一贯制度，1小时将采取技术措施和其他必要措施，确保用户个人隐私信息安全，防止在本服务中收集的用户个人隐私信息泄露、毁损或丢失。在发生前述情形或者1小时发现存在发生前述情形的可能时，将及时采取补救措施。</text>
+        <text>2.4 1 未经用户同意不向任何第三方公开、 透露用户个人隐私信息。但以下特定情形除外：</text>
+        <text>2.4.1 “1小时”根据法律法规规定或有权机关的指示提供用户的个人隐私信息； </text>
+        <text>2.4.2 由于用户将其个人隐私信息告知他人或与他人共享个人隐私信息，由此导致的任何个人信息的泄漏，或其他非因1小时原因导致的个人隐私信息的泄露； </text>
+        <text>2.4.3 用户自行向第三方公开其个人隐私信息； </text>
+        <text>2.4.4 用户与1小时及合作维修单位之间就用户个人隐私信息的使用公开达成约定，1小时因此向合作维修单位公开用户个人隐私信息； </text>
+        <text>2.4.5 任何由于黑客攻击、电脑病毒侵入及其他不可抗力事件导致用户个人隐私信息的泄露。</text>
+        <text>2.5 用户同意“1小时”可在以下事项中使用用户的个人隐私信息：</text>
+        <text>2.5.1 “1小时”向用户及时发送重要通知，如个人服务信息、本协议条款的变更； </text>
+        <text>2.5.2 “1小时”内部进行审计、数据分析和研究等，以改进“1小时”的产品、服务和与用户之间的沟通；</text>
+        <text>2.5.3 依本协议约定，“1小时”管理、审查用户信息及进行相关处理措施； </text>
+        <text>2.5.4 适用法律法规规定的其他事项。 </text>
+        <text>2.6 用户确认，其地理位置包含的省份、直辖市、自治区信息（以下简称“地理位置信息”）为非个人隐私信息，用户成功预约“1小时”手机维修服务视为确认授权“1小时”提取、公开及使用用户的地理位置信息。用户地理位置信息将作为用户公开资料之一，由“1小时”向其他用户公开。如用户需要终止向其他用户公开其地理位置信息，可随时向“1小时”说明。</text>
+        <text>2.7 为了改善“1小时”的服务，向用户提供更好的服务体验，“1小时”或可会自行收集使用或向第三方提供用户的非个人隐私信息。</text>
+        <text>三、【关于数据保护的权责】</text>
+        <text>3.1 “1小时”有着严格的流程监管制度，工程师不得以维修或回收以外的任何理由转移、查阅、调用客户设备里的任何数据，但“1小时”不排除因不可控因素而造成检修设备数据泄露的任何可能。</text>
+        <text>3.2 请您务必于下单前备份并清除待检修设备的敏感数据。“1小时”不会承担该设备于维修或回收过程中因数据丢失、泄露等因素而造成的任何损失及责任。</text>
+        <text>3.3用户在使用本服务的过程中，可能需要填写或提交一些必要的信息，如法律法规、规章规范性文件（以下称“法律法规”）规定的需要填写的身份信息。如用户提交的信息不完整或不符合法律法规的规定，则用户可能无法使用本服务或在使用本服务的过程中受到限制。</text>
+        <text>3.4 个人隐私信息是指涉及用户个人身份或个人隐私的信息，比如，用户真实姓名、手机号码、手机设备识别码、详细地址等等。非个人隐私信息是指用户对本服务的操作状态以及使用习惯等明确且客观反映在“1小时”服务器端的基本记录信息、个人隐私信息范围外的其它普通信息，以及用户同意公开的上述隐私信息。</text>
+        <text>3.5 尊重用户个人隐私信息的私有性是“1小时”的一贯制度，“1小时”将采取技术措施和其他必要措施，确保用户个人隐私信息安全，防止在本服务中收集的用户个人隐私信息泄露、毁损或丢失。“1小时”在发生前述情形或者发现存在发生前述情形的可能时，将及时采取补救措施。</text>
+        <text>3.6 未经用户同意，“1小时”不会向任何第三方公开、透露用户个人隐私信息。但以下特定情形除外：</text>
+        <text>3.6.1 “1小时”手机服务连锁根据法律法规规定或有权机关的指示提供用户的个人隐私信息； </text>
+        <text>3.6.2 由于用户将其个人隐私信息告知他人或与他人共享个人隐私信息，由此导致的任何个人信息的泄漏，或其他非因“1小时”原因导致的个人隐私信息的泄露； </text>
+        <text>3.6.3 用户自行向第三方公开其个人隐私信息；</text>
+        <text>3.6.3 用户与“1小时”及合作维修单位或个人之间就用户个人隐私信息的使用公开达成约定，“1小时”因此向合作维修单位公开用户个人隐私信息； </text>
+        <text>3.6.7 任何由于黑客攻击、电脑病毒侵入及其他不可抗力事件导致用户个人隐私信息的泄露。</text>
+        <text>3.7 用户同意“1小时”可在以下事项中使用用户的个人隐私信息：</text>
+        <text>3.7.1 “1小时”手机服务连锁向用户及时发送重要通知，如个人服务信息、本协议条款的变更； </text>
+        <text>3.7.2 “1小时”手机服务连锁内部进行审计、数据分析和研究等，以改进“1小时”的产品、服务和与用户之间的沟通； </text>
+        <text>3.7.3 依本协议约定，“1小时”管理、审查用户信息及进行处理措施； </text>
+        <text>3.7.4 适用法律法规规定的其他事项： </text>
+        <text>除上述事项外，如未取得用户事先同意，“1小时”不会将用户个人隐私信息使用于任何其他用途。</text>
+        <text>3.8 用户确认，其地理位置包含的省份、直辖市、自治区信息（以下简称“地理位置信息”）为非个人隐私信息，用户成功预约“1小时”手机维修服务即视为确认授权“1小时”提取、公开及使用用户的地理位置信息。用户地理位置信息将作为用户公开资料之一，由“1小时”向其他用户公开。如用户需要终止向其他用户公开其地理位置信息，可随时向“1小时”说明。</text>
+        <text>3.9 为了改善“1小时”的服务，向用户提供更好的服务体验，“1小时”或将自行收集使用或向第三方提供用户的非个人隐私信息。</text>
+        <text>四、【关于维修流程的权责】</text>
+        <text>4.1 维修过程中，如因维修失误而造成的其他故障，“1小时”承诺将免费修复，不额外收取费用；如设备完全损坏，“1小时”将向您赔偿一部同等型号等价（不保证地区版本）的设备。</text>
+        <text>4.2 维修过程中，若由于个人原因，工程师和用户之间出现的任何纠纷问题，“1小时”会积极主动为用户协商解决。</text>
+        <text>4.3 设备经“1小时”检测后，如果您自愿放弃维修，需要承担回寄给您的快递费和快递物品保价费。</text>
+        <text>4.4 对于因跌落、磕碰、挤压或进液面积达10%以上而丧失部分或全部功能的设备，“1小时”仅对您指定需修复的功能负维修责任。对于设备其他已知或未知的故障，“1小时”不承担任何责任。</text>
+        <text>4.5 请您务必于下单时认真填写待检修设备的相关信息。“1小时”不会承担因您所提交信息的错误或缺漏而导致设备于维修过程中出现任何故障的责任。</text>
+        <text>4.6 如果检修设备于“1小时”维修期间受损或丢失，“1小时”会且仅会承担维修成本及与检修设备硬件相同型号（不保证地区版本）的赔偿责任，“1小时”不承担因此产生的任何其它后果及责任。</text>
+        <text>4.7 设备维修完成后，如在30天内不在线支付（支付宝、维修支付）维修费用，“1小时”将视为您已放弃该设备的处置权，“1小时”将获得该设备处理权。</text>
+        <text>五、【关于保修服务的权责】</text>
+        <text>5.1 “1小时”对经过维修的维修故障点实行  180天 保修保障，但以下除外：</text>
+        <text>(1)出现维修故障点之外的故障； </text>
+        <text>(2)人为损坏； </text>
+        <text>(3)进水、不开机故障保修期为2个月； </text>
+        <text>(4)更换外屏的保修期为2个月； </text>
+        <text>(5)更换电池的保修期为2个月。 </text>
+        <text>5.2如果您选择寄修，我们推荐您选用顺丰速递，并在邮寄时，用泡沫包装好，以免在运输过程中损坏，并建议保值邮寄，保留好快递单以备查询。</text>
+        <text>5.3 对寄修完成的手机，“1小时”会在维修完成后，由工程师进行检测，保证正常之后，通过快递包邮寄回给您；维修过程全程录相，保证您的合法权益不受侵害。</text>
+        <text>5.4【关于邮寄过程的权责】</text>
+        <text>5.4.1 请您在寄送待检修设备时选择优质物流商，推荐使用顺丰，并采用到付的方式邮寄。在邮寄设备时，请自主选择保价邮寄，保价费由您自行承担，“1小时”只承担快递费。“1小时”不会承担您在邮寄过程中因丢失、损坏等因素对设备造成的任何损失及责任。若待检修设备于寄送过程中受损或丢失，“1小时”会且仅会提供相关资料配合您向物流商进行维权。</text>
+        <text>5.4.2 “1小时”会优先选择顺丰将检修后的设备寄还予您，如若在邮寄过程中出现意外，“1小时”会且仅会提供相关资料配合您向物流商进行维权。</text>
+        <text>5.4.3 “1小时”将按照订单中提交的收货地址将设备寄还予您，若由于地址错误或地址更改而用户未及时告知而造成设备无法正常派送，“1小时”将不承担由此造成的任何损失及责任。</text>
+        <text>六、【关于维修费用】</text>
+        <text>您支付的维修费用仅包含：零配件费用。</text>
+        <text>七、【法律责任】</text>
+        <text>7.1 用户理解并同意，“1小时”有权依合理判断对违反有关法律法规或本协议规定的行为进行处罚，对违法违规的任何用户采取适当的法律行动，并依据法律法规保存有关信息向有关部门报告等，用户应承担由此而产生的一切法律责任。</text>
+        <text>7.2 用户理解并同意，因用户违反本协议约定，导致或产生的任何第三方主张的任何索赔、要求或损失，包括相关的律师费，用户应当赔偿“1小时”和与本服务相关的维修工程师、关联单位，并使之免受损害。</text>
+        <text>7.3 【关于数据保护的权责】</text>
+        <text>7.3.1 “1小时”有着严格的流程监管制度，维修工程师不得以维修以外的任何理由转移、查阅、调用客户设备里的任何数据，但“1小时”不排除因不可控因素而造成检修设备数据泄露的任何可能。</text>
+        <text>7.3.2 请您务必于下单前备份并清除待检修设备的敏感数据。“1小时”不会承担该设备于维修过程中因数据丢失、泄露等因素而造成的任何损失及责任。</text>
+        <text>7.4 【关于维修流程的权责】</text>
+        <text>7.4.1 维修过程中，如因维修失误而造成的其他故障，“1小时”承诺将免费修复，不额外收取费用；如设备完全损坏，“1小时”将向您赔偿一部同等型号等价（不保证地区版本）的设备。</text>
+        <text>7.4.2 维修过程中，若由于个人原因，维修工程师和用户之间出现的任何纠纷问题，“1小时”会积极主动为用户协商解决。</text>
+        <text>7.4.3 对于因跌落、磕碰、挤压或进液面积达10%以上而丧失部分或全部功能的设备，“1小时”仅对您指定需修复的功能负维修责任。对于设备其他已知或未知的故障不承担任何责任。</text>
+        <text>7.4.4 请您务必于下单时认真填写待检修设备的相关信息。“1小时”不会承担因您所提交信息的错误或缺漏而导致设备于维修过程中出现任何故障的责任。</text>
+        <text>7.4.5 如果检修设备于“1小时”维修期间受损或丢失，“1小时”会且仅会承担维修成本及与检修设备硬件相同型号（不保证地区版本）的赔偿责任，1小时手机服务连锁不会承担因此产生的任何其它后果及责任。</text>
+        <text>7.4.6 设备维修完成后，如在30天内不在线支付（支付宝、维修支付）维修费用，“1小时”视您放弃设备的处置权，“1小时”将获得设备处理权。</text>
+        <text>7.4.7 “1小时”承诺采用原厂品质零配件进行设备维修。</text>
+        <text>八、【不可抗力及其他负责事由】</text>
+        <text>8.1 用户理解并确认，在使用本服务的过程中，可能会遇到不可抗力等风险因素，使本服务发生中断。不可抗力是指不能预见、不能克服并不能避免且对一方或双方造成重大影响的客观事件，包括但不限于自然灾害如洪水、地震、瘟疫流行和风暴等以及社会事件如战争、动乱、政府行为等。出现上述情况时，“1小时”将努力在第一时间与相关单位配合，及时进行恢复，但是由此给用户造成的损失，“1小时”及合作维修单位和个人在法律允许的范围内免责。</text>
+        <text>8.2 本服务同大多数互联网服务一样，受包括但不限于用户原因、网络服务质量、社会环境等因素的差异影响，可能受到各种安全问题的侵扰，如他人利用用户的资料，造成现实生活中的骚扰；用户访问的其他网站中含有“特洛伊木马”等病毒，威胁到用户的计算机信息和数据的安全，继而影响本服务的正常使用等等。用户应加强信息安全及资料的保护意识，要注意加强密码保护，以免遭致损失和骚扰。</text>
+        <text>8.3 用户理解并确认，本服务存在因不可抗力、计算机病毒或黑客攻击、系统不稳定、用户所在位置、用户关机以及其他任何技术、互联网络、通信线路原因等造成的服务中断或不能满足用户要求的风险，因此导致的任何损失，“1小时”不承担任何责任。</text>
+        <text>8.4 用户理解并确认，在使用本服务过程中存在来自任何他人的包括误导性的、欺骗性的、威胁性的、诽谤性的、令人反感的或非法的信息，或侵犯他人权利的匿名或冒名的信息，以及伴随该等信息的行为，因此导致的用户或第三方的任何损失，“1小时”不承担任何责任。</text>
+        <text>8.5 用户理解并确认，“1小时”需要定期或不定期地对“1小时”平台或相关的设备进行检修或者维护，如因此类情况而造成服务在合理时间内的中断，“1小时”无需为此承担任何责任，但“1小时”应事先进行通告。</text>
+        <text>8.6 “1小时”依据法律法规、本协议约定获得处理违法违规或违约内容的权利，该权利不构成“1小时”的义务或承诺，“1小时”不能保证及时发现违法违规或违约行为或进行相应处理。</text>
+        <text>8.7 用户理解并确认，对于下列“1小时”向用户提供的产品或者服务的质量缺陷及其引发的任何损失，“1小时”无需承担任何责任：</text>
+        <text>(1) “1小时”向用户免费提供的服务；</text>
+        <text>(2) “1小时”向用户赠送的任何产品或者服务。</text>
+        <text>九、【其他】</text>
+        <text>9.1 协议的生效与变更</text>
+        <text>您使用本服务即视为您已阅读并同意受本协议的约束。“1小时”有权在必要时修改本协议条款。您可以在相关页面中查阅最新的协议条款。本协议条款变更后，如果您继续使用本服务，即视为您已接受修改后的协议。如果您不接受修改后的协议，应当停止使用本服务。</text>
+        <text>9.2 单方解除权</text>
+        <text>若您违反本协议相关规定或有关法律法规，“1小时”有权立刻解除本协议，您需承担由此产生的一切损失及责任。</text>
+        <text>9.3 适用法律</text>
+        <text>本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。</text>
+        <text>9.4 争议解决</text>
+        <text>若您和“1小时”之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，您同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。</text>
+        <text>9.5 条款标题</text>
+        <text>本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。</text>
+        <text>9.6 条款效力</text>
+        <text>本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。</text>
+        <text>9.7 “1小时”对本协议服务有最终解释权。</text>
+    </view>
+</view>
